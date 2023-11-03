@@ -15,4 +15,10 @@ export class User {
     @Column()
     age: number
 
+    @Column()
+    phone: string
+
+    @Column()
+    city: string
+
 }
