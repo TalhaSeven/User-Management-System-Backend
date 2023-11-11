@@ -1,22 +1,24 @@
 import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
 import { User } from "../entity/User";
+import { Like } from "typeorm";
 
 export class UserController {
   private userRepository = AppDataSource.getRepository(User);
 
   async all(request: Request, response: Response, next: NextFunction) {
-    return this.userRepository.find();
+    return this.userRepository.find({
+      relations: { phone: true, address: true, email: true },
+    });
   }
 
   async search(request: Request, response: Response, next: NextFunction) {
     const lastName = request.query["lastName"] as string;
     const firstName = request.query["firstName"] as string;
-
-    console.log(request.query["lastName"]);
-    console.log(request.query["firstName"]);
     return this.userRepository.find({
-      where: { firstName: firstName, lastName: lastName },
+      where: { 
+        firstName: Like(`%${firstName}%`), 
+        lastName: Like(`%${lastName}%`)},
     });
   }
 
@@ -34,7 +36,7 @@ export class UserController {
   }
 
   async save(request: Request, response: Response, next: NextFunction) {
-    const { firstName, lastName, age, phone, city }: User = request.body;
+    const { firstName, lastName, age }: User = request.body;
     /*
     const usr = request.body as User;
     const usr: User = request.body;
@@ -46,8 +48,6 @@ export class UserController {
       firstName,
       lastName,
       age,
-      phone,
-      city,
     });
 
     // return this.userRepository.save({ firstName, lastName, age, phone, city });
@@ -56,21 +56,19 @@ export class UserController {
 
   async update(request: Request, response: Response, next: NextFunction) {
     const userId = parseInt(request.params.id);
-    const { firstName, lastName, age, phone, city }: User = request.body;
+    const { firstName, lastName, age }: User = request.body;
 
     const user = Object.assign(new User(), {
       firstName,
       lastName,
       age,
-      phone,
-      city,
     });
 
     return this.userRepository.update(
       {
         id: userId,
       },
-      { firstName, lastName, age, phone, city }
+      { firstName, lastName, age }
     );
   }
 

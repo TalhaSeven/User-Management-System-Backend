@@ -10,6 +10,7 @@ AppDataSource.initialize()
   .then(async () => {
     const app = express();
     app.use(bodyParser.json());
+    app.use(express.static('public'))
     // app.use(
     //   cors({
     //     credentials: true,
@@ -39,26 +40,6 @@ AppDataSource.initialize()
     });
 
     app.listen(3050);
-
-    await AppDataSource.manager.save(
-      AppDataSource.manager.create(User, {
-        firstName: "Talha",
-        lastName: "Seven",
-        age: 27,
-        phone: "123456789",
-        city: "Afyonkarahisar",
-      })
-    );
-
-    await AppDataSource.manager.save(
-      AppDataSource.manager.create(User, {
-        firstName: "Cemile Nur",
-        lastName: "Seven",
-        age: 24,
-        phone: "123456789",
-        city: "Manisa",
-      })
-    );
 
   })
   .catch((error) => console.log(error));

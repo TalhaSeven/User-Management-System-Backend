@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Phone } from "./Phone"
+import { Email } from "./Email"
+import { Address } from "./Address"
 
 @Entity()
 export class User {
@@ -14,11 +17,14 @@ export class User {
 
     @Column()
     age: number
+    
+    @OneToMany(() => Phone, (phone) => phone.user)
+    phone: Phone
 
-    @Column()
-    phone: string
-
-    @Column()
-    city: string
-
+    @OneToMany(() => Email, (email) => email.user)
+    email: Email
+    
+    @OneToMany(() => Address, (address) => address.user)
+    address: Address
+    
 }
