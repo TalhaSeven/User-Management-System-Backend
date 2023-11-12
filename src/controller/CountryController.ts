@@ -30,9 +30,9 @@ export class CountryController {
 
     const address = await this.addressRepository.find({
       where: {
-        country
+        country,
       },
-      relations: { 
+      relations: {
         user: true,
         country: true,
         city: true,

@@ -14,7 +14,10 @@ export class SearchController {
         { townName: Like(`%${search}%`) },
         { district: { districtName: Like(`%${search}%`) } },
         { district: { city: { cityName: Like(`%${search}%`) } } },
-        { district: { city: { country: { countryName: Like(`%${search}%`) } } } }],
+        {
+          district: { city: { country: { countryName: Like(`%${search}%`) } } },
+        },
+      ],
       relations: {
         district: { city: { country: true } },
         address: { user: { email: true, phone: true } },

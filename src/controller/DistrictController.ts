@@ -13,7 +13,11 @@ export class DistrictController {
     return this.districtRepository.find({ relations: { city: true } });
   }
 
-  async districtUsers(request: Request, response: Response, next: NextFunction) {
+  async districtUsers(
+    request: Request,
+    response: Response,
+    next: NextFunction
+  ) {
     const districtId = parseInt(request.params.districtId);
     const district = await this.districtRepository.findOne({
       where: {
@@ -28,9 +32,9 @@ export class DistrictController {
 
     const address = await this.addressRepository.find({
       where: {
-        district
+        district,
       },
-      relations: { 
+      relations: {
         user: true,
         country: true,
         city: true,

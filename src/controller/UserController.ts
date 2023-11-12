@@ -13,12 +13,13 @@ export class UserController {
   }
 
   async search(request: Request, response: Response, next: NextFunction) {
-    const lastName = request.query["lastName"] as string;
     const firstName = request.query["firstName"] as string;
+    const lastName = request.query["lastName"] as string;
     return this.userRepository.find({
-      where: { 
-        firstName: Like(`%${firstName}%`), 
-        lastName: Like(`%${lastName}%`)},
+      where: {
+        firstName: Like(`%${firstName}%`),
+        lastName: Like(`%${lastName}%`),
+      },
     });
   }
 

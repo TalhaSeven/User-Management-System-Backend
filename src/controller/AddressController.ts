@@ -37,10 +37,9 @@ export class AddressController {
         user: true,
       },
     });
-    
 
     if (!address) {
-        response.status(404);
+      response.status(404);
       return "Not address found";
     }
 
@@ -50,12 +49,12 @@ export class AddressController {
   async userOne(request: Request, response: Response, next: NextFunction) {
     const userId = parseInt(request.params.userId);
     const user = await this.userRepository.findOne({
-        where: {
-            id: userId,
-        },
-        });
+      where: {
+        id: userId,
+      },
+    });
     if (!user) {
-        response.status(404);
+      response.status(404);
       return "Not user found";
     }
 
@@ -73,7 +72,7 @@ export class AddressController {
     });
 
     if (!address) {
-        response.status(404);
+      response.status(404);
       return "Not address found";
     }
 

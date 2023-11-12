@@ -89,9 +89,13 @@ export class FileController {
 
     for (let x of users) {
       const user = await this.userRepository.findOne({ where: { id: x } });
-      const country = await this.countryRepository.findOne({ where: { id: 1 }});
+      const country = await this.countryRepository.findOne({
+        where: { id: 1 },
+      });
       const city = await this.cityRepository.findOne({ where: { id: x } });
-      const district = await this.districtRepository.findOne({ where: { id: x }});
+      const district = await this.districtRepository.findOne({
+        where: { id: x },
+      });
       const town = await this.townRepository.findOne({ where: { id: x } });
 
       const address = Object.assign(new Address(), {
