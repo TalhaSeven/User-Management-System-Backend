@@ -37,20 +37,12 @@ export class UserController {
 
   async save(request: Request, response: Response, next: NextFunction) {
     const { firstName, lastName, age }: User = request.body;
-    /*
-    const usr = request.body as User;
-    const usr: User = request.body;
-    */
-    //const abc = Object.assign(new User(), usr)
-
     const user = Object.assign(new User(), {
-      //firstName: usr.firstName,
       firstName,
       lastName,
       age,
     });
 
-    // return this.userRepository.save({ firstName, lastName, age, phone, city });
     return this.userRepository.save(user);
   }
 

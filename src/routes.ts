@@ -1,11 +1,11 @@
+import { UserController } from "./controller/UserController";
 import { AddressController } from "./controller/AddressController";
-import { CityController } from "./controller/CityController";
 import { CountryController } from "./controller/CountryController";
+import { CityController } from "./controller/CityController";
 import { DistrictController } from "./controller/DistrictController";
+import { TownController } from "./controller/TownController";
 import { FileController } from "./controller/FileController";
 import { SearchController } from "./controller/SearchController";
-import { TownController } from "./controller/TownController";
-import { UserController } from "./controller/UserController";
 
 export const Routes = [
   {

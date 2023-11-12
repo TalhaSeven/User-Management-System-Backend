@@ -1,21 +1,20 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as cors from "cors";
 import { Request, Response } from "express";
 import { AppDataSource } from "./data-source";
 import { Routes } from "./routes";
-import { User } from "./entity/User";
-// var cors = require("cors");
 
 AppDataSource.initialize()
   .then(async () => {
     const app = express();
     app.use(bodyParser.json());
-    app.use(express.static('public'))
-    // app.use(
-    //   cors({
-    //     credentials: true,
-    //   })
-    // );
+    app.use(express.static("public"));
+    app.use(
+      cors({
+        credentials: true,
+      })
+    );
 
     Routes.forEach((route) => {
       (app as any)[route.method](
@@ -40,6 +39,5 @@ AppDataSource.initialize()
     });
 
     app.listen(3050);
-
   })
-  .catch((error) => console.log(error));
+  .catch((error: any) => console.log(error));
