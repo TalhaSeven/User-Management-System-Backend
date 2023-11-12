@@ -8,9 +8,9 @@ import {
 import { User } from "./User";
 
 enum emailType {
-  JOB = "iş",
-  HOME = "ev",
-  OTHER = "diğer",
+  WORK = "work",
+  HOME = "home",
+  OTHER = "other",
 }
 
 @Entity()

@@ -2,10 +2,10 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "t
 import { User } from "./User"
 
 enum phoneType {
-    JOB = "iş",
-    HOME = "ev",
-    OTHER = "diğer",
-  }
+    WORK = "work",
+    HOME = "home",
+    OTHER = "other",
+}
 
 @Entity()
 export class Phone {

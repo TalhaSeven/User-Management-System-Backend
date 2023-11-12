@@ -12,9 +12,9 @@ import { District } from "./District";
 import { Town } from "./Town";
 
 enum addressType {
-  JOB = "iş",
-  HOME = "ev",
-  OTHER = "diğer",
+  WORK = "work",
+  HOME = "home",
+  OTHER = "other",
 }
 
 @Entity()
