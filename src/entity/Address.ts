@@ -56,4 +56,5 @@ export class Address {
   @ManyToOne(() => Town, (town) => town.id)
   @JoinColumn()
   town: Town;
+  
 }

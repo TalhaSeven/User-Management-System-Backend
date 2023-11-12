@@ -27,4 +27,5 @@ export class Email {
   @ManyToOne(() => User, (user) => user.id)
   @JoinColumn()
   user: User;
+
 }
