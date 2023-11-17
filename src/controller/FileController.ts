@@ -73,14 +73,14 @@ export class FileController {
       await this.userRepository.save(user);
 
       const phone = Object.assign(new Phone(), {
-        phoneType: "ev",
+        phoneType: "home",
         phoneNumber: "500 000 00 0" + x,
         user,
       });
       await this.phoneRepository.save(phone);
 
       const email = Object.assign(new Email(), {
-        emailType: "iş",
+        emailType: "home",
         emailAddress: `abc${x}@xyz.com`,
         user,
       });
@@ -99,7 +99,7 @@ export class FileController {
       const town = await this.townRepository.findOne({ where: { id: x } });
 
       const address = Object.assign(new Address(), {
-        addressType: "iş",
+        addressType: "home",
         addressLine: "1204" + x + " SK",
         street: "1204" + x,
         post_code: "2000" + x,
